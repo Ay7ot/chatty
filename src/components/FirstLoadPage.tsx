@@ -12,7 +12,7 @@ export default function FirstLoadPage() {
     })
 
     return (
-        <div className="bg-[#3369FF] fade-in min-h-screen grid place-content-center">
+        <div className="bg-[#3369FF] fade-in height grid place-content-center">
             <img 
                 src="mascot.png"
             />
