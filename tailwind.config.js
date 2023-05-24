@@ -6,6 +6,15 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'nunito': ['Nunito', 'sans-serif']
+    },
+    colors: {
+      'blue': '#3369FF',
+      'gray': '#757575',
+      'white': '#ffffff',
+      'green': '#3ABF38'
+    }
   },
   plugins: [],
 }
