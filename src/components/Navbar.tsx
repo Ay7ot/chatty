@@ -5,7 +5,7 @@ export default function Navbar() {
     const navigate = useNavigate()
 
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between sticky top-0 z-[9999] py-4 bg-white">
             <div className='flex gap-6 items-center'>
                 <button onClick={()=>{navigate('/onboard')}}>
                     <FaArrowLeft />

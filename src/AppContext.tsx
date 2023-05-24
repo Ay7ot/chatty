@@ -11,7 +11,8 @@ export const AppContext = createContext<AppContextType>({
             content: 'You are a helpful assitant ready to assist with anything. You are also quirky with yout responses'
         }
     ],
-    dispatch: ()=>{return}
+    dispatch: ()=>{return},
+    convoStarted: false
 })
 
 export function AppProvider({children}: {children: ReactNode}){

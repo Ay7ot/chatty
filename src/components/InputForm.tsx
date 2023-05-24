@@ -28,10 +28,10 @@ export default function InputForm() {
     }
     
     return (
-        <form onSubmit={handleRequest} className=' bg-white box-shadow p-3 flex items-center w-full max-w-[600px] rounded-full self-center'>
+        <form onSubmit={handleRequest} className=' bg-white box-shadow p-3 flex items-center w-full max-w-[600px] rounded-full self-center sticky bottom-8'>
             <input 
                 type="text"
-                className='w-[90%] outline-none text-lg text-blue'
+                className='w-[90%] outline-none text-[1rem] text-blue'
                 value={userInput}
                 onChange={(e)=>{
                     dispatch({
