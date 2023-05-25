@@ -12,7 +12,8 @@ export const AppContext = createContext<AppContextType>({
         }
     ],
     dispatch: ()=>{return},
-    convoStarted: false
+    convoStarted: false,
+    stateChanged: ''
 })
 
 export function AppProvider({children}: {children: ReactNode}){

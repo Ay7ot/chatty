@@ -8,11 +8,25 @@ export default function InputForm() {
 
     async function handleRequest(e: React.FormEvent){
         e.preventDefault()
+        
+
+        dispatch({
+            type: 'startConvo',
+            payload: {
+                convoStartedPayload: true
+            }
+        })
         conversation.push({
             role: 'user',
             content: userInput
         })
-
+        //Adding this to trigger state change for user input
+        dispatch({
+            type: 'changeState',
+            payload: {
+                stateChangedPayload: 'Added Assistant message'
+            }
+        })
         dispatch({
             type: 'setUserInput',
             payload: {
@@ -23,12 +37,19 @@ export default function InputForm() {
         await fetchReply(conversation).then(res=>{
             if(res){
                 conversation.push(res)
+                //Adding this to trigger state update for Assistant reply
+                dispatch({
+                    type: 'changeState',
+                    payload: {
+                        stateChangedPayload: 'Added Assistant message'
+                    }
+                })
             }else console.log('Error')
         })
     }
     
     return (
-        <form onSubmit={handleRequest} className=' bg-white box-shadow p-3 flex items-center w-full max-w-[600px] rounded-full self-center sticky bottom-8'>
+        <form onSubmit={handleRequest} className=' bg-white box-shadow p-3 flex items-center w-full max-w-[600px] rounded-full self-center absolute bottom-2'>
             <input 
                 type="text"
                 className='w-[90%] outline-none text-[1rem] text-blue'

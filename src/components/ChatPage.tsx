@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 export default function ChatPage() {
 
     return (
-        <div className="fade-in height p-8 pt-0 relative flex flex-col justify-between">
+        <div className="fade-in height px-8 relative flex flex-col">
            <Navbar />
            <ConversationPage />
            <InputForm />

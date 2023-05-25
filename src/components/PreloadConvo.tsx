@@ -4,7 +4,7 @@ import { useAuth } from './useAuth'
 
 export default function PreloadConvo() {
 
-    const {dispatch, userInput} = useAuth()
+    const {dispatch} = useAuth()
     const data = [
         {
             name: 'Explain',
@@ -40,16 +40,16 @@ export default function PreloadConvo() {
     }
 
     return (
-        <div className="flex flex-col justify-between h-full items-center md:grid md:grid-cols-3 overflow-y-scroll pb-10">
-            {data.map(item=>{
+        <div className="flex flex-col justify-between h-full items-center md:grid md:grid-cols-3 overflow-y-scroll no-scrollbar pb-7">
+            {data.map((item, index)=>{
               
                 return (
-                    <div className='my-5 flex flex-col items-center '>
+                    <div key={index} className='my-5 flex flex-col items-center '>
                        <i className='text-3xl'> {item.name==='Explain' ?  <AiOutlineAlignLeft /> : item.name === 'Translate' ?  <BsTranslate /> :  <AiOutlineEdit />}</i>
                        <h3 className='font-bold text-sm mb-2'>{item.name}</h3>
                        <div>
-                            {item.items.map(item=>{
-                                return <p onClick={()=>setPreloadText(item)} className='w-full p-3 rounded-full text-center bg-[#F4F4F4] mb-2'>{item}</p>
+                            {item.items.map((item, index)=>{
+                                return <p key={index} onClick={()=>setPreloadText(item)} className='w-full cursor-pointer p-3 rounded-full text-center bg-[#F4F4F4] mb-2'>{item}</p>
                             })}
                        </div>
                     </div>

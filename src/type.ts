@@ -7,7 +7,8 @@ export type AppContextType= {
     userInput: string;
     conversation: conversationType[],
     dispatch: React.Dispatch<AppActionType>,
-    convoStarted: boolean
+    convoStarted: boolean,
+    stateChanged: string
 }
 
 export type AppActionType = {
@@ -15,6 +16,7 @@ export type AppActionType = {
     payload? : {
         userInputPayload?: string;
         conversationPayload?: conversationType[]
-        convoStartedPayload?: boolean
+        convoStartedPayload?: boolean;
+        stateChangedPayload?: string
     }
 }

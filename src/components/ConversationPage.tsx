@@ -1,3 +1,4 @@
+import ChatTabs from "./ChatTabs";
 import PreloadConvo from "./PreloadConvo";
 import { useAuth } from "./useAuth";
 
@@ -7,7 +8,7 @@ export default function ConversationPage() {
     
     return (
         <div className="h-full">
-            <PreloadConvo />
+            {convoStarted ? <ChatTabs /> : <PreloadConvo />}
         </div>
     )
 }

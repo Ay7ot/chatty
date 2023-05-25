@@ -8,6 +8,16 @@ export function appReducer(state: AppContextType, action: AppActionType){
                 ...state,
                 userInput: action.payload?.userInputPayload ?? ''
             }
+        case 'startConvo':
+            return {
+                ...state,
+                convoStarted: action.payload?.convoStartedPayload ?? false
+            }
+        case 'changeState':
+            return {
+                ...state,
+                stateChanged: action.payload?.stateChangedPayload ?? ''
+            }
         default:
              return state
     }
