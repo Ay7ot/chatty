@@ -4,12 +4,15 @@ import { useAuth } from './useAuth'
 
 export default function InputForm() {
 
-    const {userInput, dispatch, conversation} = useAuth()
+    const {userInput, dispatch, conversation, loading} = useAuth()
 
     async function handleRequest(e: React.FormEvent){
         e.preventDefault()
         
-        if(userInput===''){return}
+        dispatch({
+            type:'setLoadingTrue'
+        })
+        if(userInput==='' || loading){return}
         dispatch({
             type: 'startConvo',
             payload: {
@@ -34,8 +37,9 @@ export default function InputForm() {
             }
         })
 
-        await fetchReply(conversation).then(res=>{
-            if(res){
+        try{
+           const res = await fetchReply(conversation)
+           if(res){
                 conversation.push(res)
                 //Adding this to trigger state update for Assistant reply
                 dispatch({
@@ -44,8 +48,16 @@ export default function InputForm() {
                         stateChangedPayload: 'Added Assistant message'
                     }
                 })
-            }else console.log('Error')
-        })
+            }else {
+                console.log('Error')
+            }
+        } catch (error){
+            console.log(error)
+        } finally {
+            dispatch({
+                type:'setLoadingFalse'
+            })
+        }
     }
     
     return (

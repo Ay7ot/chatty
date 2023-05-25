@@ -13,7 +13,9 @@ export const AppContext = createContext<AppContextType>({
     ],
     dispatch: ()=>{return},
     convoStarted: false,
-    stateChanged: ''
+    stateChanged: '',
+    loading: false,
+    typingComplete: true
 })
 
 export function AppProvider({children}: {children: ReactNode}){

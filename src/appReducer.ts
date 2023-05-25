@@ -26,6 +26,26 @@ export function appReducer(state: AppContextType, action: AppActionType){
                     content: 'You are a helpful assitant ready to assist with anything. You are also quirky with yout responses'
                 }]
             }
+        case 'setLoadingTrue':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'setLoadingFalse':
+            return {
+                ...state,
+                loading: false
+            }
+        case 'typeCompleted':
+            return {
+                ...state,
+                typingComplete: true
+            }
+        case 'typeNotCompleted':
+            return {
+                ...state,
+                typingComplete: false
+            }
         default:
              return state
     }
