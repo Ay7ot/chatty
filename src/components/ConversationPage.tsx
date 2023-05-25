@@ -7,7 +7,7 @@ export default function ConversationPage() {
     const { convoStarted } = useAuth()
     
     return (
-        <div className="h-full">
+        <div className="self-center">
             {convoStarted ? <ChatTabs /> : <PreloadConvo />}
         </div>
     )

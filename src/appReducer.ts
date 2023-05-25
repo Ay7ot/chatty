@@ -18,6 +18,14 @@ export function appReducer(state: AppContextType, action: AppActionType){
                 ...state,
                 stateChanged: action.payload?.stateChangedPayload ?? ''
             }
+        case 'setNewConversation':
+            return {
+                ...state,
+                conversation: action.payload?.conversationPayload ?? [{
+                    role: 'system',
+                    content: 'You are a helpful assitant ready to assist with anything. You are also quirky with yout responses'
+                }]
+            }
         default:
              return state
     }

@@ -1,9 +1,16 @@
 import {FaArrowLeft} from 'react-icons/fa'
 import {useNavigate} from 'react-router-dom'
+import { useAuth } from './useAuth'
 
 export default function Navbar() {
     const navigate = useNavigate()
+    const {dispatch} = useAuth()
 
+    function startOver(){
+        dispatch({
+            type: 'setNewConversation'
+        })
+    }
     return (
         <div className="flex justify-between sticky top-0 z-[9999] py-4 bg-white">
             <div className='flex gap-6 items-center'>
@@ -16,7 +23,7 @@ export default function Navbar() {
                     <p className='text-green'><span></span> Online</p>
                 </div>
             </div>
-            <button className='border-blue border-[2px] px-4 rounded-full font-semibold text-[1.1rem] hover:bg-blue hover:text-white active:bg-blue active:text-white'>Start over</button>
+            <button onClick={startOver} className='border-blue border-[2px] px-4 rounded-full font-semibold text-[1.1rem] hover:bg-blue hover:text-white active:bg-blue active:text-white'>Start over</button>
         </div>
     )
 }
