@@ -1,5 +1,5 @@
 import { useAuth } from './useAuth'
-import { createAssistantTab, createUserTab } from '../functions';
+import { CreateAssistantTab, CreateUserTab } from '../functions';
 
 
 export default function ChatTabs() {
@@ -8,12 +8,12 @@ export default function ChatTabs() {
 
 
     return (
-        <div className="h-[75vh] max-w-[600px]  chatTabs overflow-y-scroll no-scrollbar">
-            {conversation.map(convo=>{
+        <div className="h-[75vh] max-w-[600px] w-full chatTabs overflow-y-scroll no-scrollbar">
+            {conversation.map((convo, index)=>{
                 if(convo.role === 'user'){
-                    return createUserTab(convo.content)
+                    return CreateUserTab(convo.content)
                 } else if (convo.role === 'assistant'){
-                    return createAssistantTab(convo.content)
+                    return <CreateAssistantTab text={convo.content} key={index}/>
                 }
             })}
         </div>
