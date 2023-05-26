@@ -5,7 +5,7 @@ import { useAuth } from './useAuth';
 export function CreateUserTab({text} : {text:string}){
     return (
         <p className="bg-blue text-white p-4 rounded-b-3xl rounded-tl-3xl ml-[10%] mb-6">
-            {text}
+          {text}
         </p>
     )
 }
@@ -24,6 +24,12 @@ export function CreateAssistantTab({ text, index }: { text: string; index: numbe
 
       if (currentIndex <= text.length) {
         timerId = setTimeout(typeText, 50);
+        dispatch({
+          type: 'changeState',
+          payload: {
+            stateChangedPayload: `textIncrease ${currentIndex}`
+          }
+        })
       } else {
         dispatch({
           type: 'typeCompleted',

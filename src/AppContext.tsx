@@ -23,7 +23,7 @@ export function AppProvider({children}: {children: ReactNode}){
     const initialState = useAuth()
 
     const [mainstate, dispatch] = useReducer(appReducer, initialState)
-    console.log(mainstate)
+    // console.log(mainstate)
     return (
         <AppContext.Provider value={{...mainstate, dispatch}}>
             {children}

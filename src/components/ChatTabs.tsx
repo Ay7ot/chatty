@@ -5,7 +5,7 @@ import { CreateAssistantTab, CreateUserTab } from './Tabs';
 
 export default function ChatTabs() {
 
-    const { conversation, typingComplete } = useAuth()
+    const { conversation, typingComplete, stateChanged } = useAuth()
     const chatsTabRef = useRef<null | HTMLDivElement>(null)
 
     const convos = JSON.stringify(conversation)
@@ -15,10 +15,10 @@ export default function ChatTabs() {
         if(chatsContainer){
             chatsContainer.scrollTop= chatsContainer.scrollHeight
         }
-    },[convos, typingComplete])
+    },[convos, typingComplete, stateChanged])
 
     return (
-        <div ref={chatsTabRef} className="h-[75vh] max-w-[600px] w-full chatTabs overflow-y-scroll no-scrollbar">
+        <div ref={chatsTabRef} className="h-[75vh] max-w-[600px] w-full chatTabs flex flex-col overflow-y-scroll no-scrollbar">
             {conversation.map((convo, index)=>{
                 if(convo.role === 'user'){
                     return <CreateUserTab text={convo.content} key={index}/>
