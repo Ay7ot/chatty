@@ -1,6 +1,6 @@
 import { useAuth } from './useAuth'
 import {useRef, useEffect} from 'react'
-import { CreateAssistantTab, CreateUserTab } from '../functions';
+import { CreateAssistantTab, CreateUserTab } from './Tabs';
 
 
 export default function ChatTabs() {
@@ -9,9 +9,9 @@ export default function ChatTabs() {
     const chatsTabRef = useRef<null | HTMLDivElement>(null)
 
     const convos = JSON.stringify(conversation)
+
     useEffect(()=>{
         const chatsContainer = chatsTabRef?.current
-        console.log(chatsContainer)
         if(chatsContainer){
             chatsContainer.scrollTop= chatsContainer.scrollHeight
         }
@@ -21,7 +21,7 @@ export default function ChatTabs() {
         <div ref={chatsTabRef} className="h-[75vh] max-w-[600px] w-full chatTabs overflow-y-scroll no-scrollbar">
             {conversation.map((convo, index)=>{
                 if(convo.role === 'user'){
-                    return CreateUserTab(convo.content)
+                    return <CreateUserTab text={convo.content} key={index}/>
                 } else if (convo.role === 'assistant'){
                     return <CreateAssistantTab text={convo.content} key={index} index={index}/>
                 }
