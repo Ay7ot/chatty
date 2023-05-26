@@ -18,7 +18,7 @@ export default function ChatTabs() {
     },[convos, typingComplete, stateChanged])
 
     return (
-        <div ref={chatsTabRef} className="h-[75vh] max-w-[600px] w-full chatTabs flex flex-col overflow-y-scroll no-scrollbar">
+        <div ref={chatsTabRef} className="h-[75vh] max-w-[600px] w-full chatTabs flex flex-col self-center overflow-y-scroll no-scrollbar">
             {conversation.map((convo, index)=>{
                 if(convo.role === 'user'){
                     return <CreateUserTab text={convo.content} key={index}/>
